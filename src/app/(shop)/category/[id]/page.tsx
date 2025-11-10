@@ -15,6 +15,8 @@ export default async function ({ params }: Props) {
 
   const { id } = await params;
   const products = seedProducts.filter(word => word.gender === id)
+  console.log(products);
+  
 
   //? tipar un objet literal
   const labels: Record<Category,string>  = {
@@ -22,6 +24,10 @@ export default async function ({ params }: Props) {
     'men':'para hombres',
     'kid':'para ninios',
     'unisex':'para todos',
+  }
+
+  if (products.length === 0) {
+    notFound();
   }
 
   return (
